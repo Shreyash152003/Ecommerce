@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/frontend_assets/assets';
+import RelatedProduct from '../components/RelatedProduct';
 
 const Product = () => {
   const { productId } = useParams();
@@ -80,6 +81,21 @@ const Product = () => {
             </div>
         </div>
       </div>
+      {/* ################# DESCRIPTION & REVIEW SECTION   ########################## */}
+      <div className='mt-20'>
+        <div className='flex'> 
+          <b className='border px-5 py-3 text-sm'>Description</b>
+          <p className='border px-5 py-3 text-sm'>Reviews (127)</p>
+        </div>
+        <div className='flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500'>
+               <p>"Shop smarter with us! Our e-commerce platform brings you trendy, affordable, and reliable products all in one place. From the latest collections to everyday essentials, we make online shopping simple, fast, and enjoyable. Your satisfaction is our priority, and we’re here to deliver happiness right to your doorstep."</p>
+                <p>"Welcome to our e-commerce store, your one-stop destination for high-quality products at the best prices. We are committed to providing a seamless shopping experience with secure payments, fast delivery, and reliable customer support. Discover a wide range of categories tailored to your needs and enjoy shopping with confidence."</p>
+        </div>
+      </div>
+      {/* ################## DISPLAY RELATED PRODUCTS ####################### */}
+       <RelatedProduct category={productData.category} subCategory={productData.subCategory}/>
+
+
     </div>
   ) : <div className='opacity-0'>
   </div>
