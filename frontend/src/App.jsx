@@ -15,6 +15,7 @@ import Login from './pages/Login'
 import Footer from './components/Footer'
 import SearchBox from './components/searchBox'
 
+
 function App() {
   const [count, setCount] = useState(0)
 
