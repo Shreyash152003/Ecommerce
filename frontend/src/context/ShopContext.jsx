@@ -18,12 +18,7 @@ const ShopContextProvider = (props)=>{
             return
         }
             toast.info('your product is being added to cart')
-           
-        
-
-
-
-
+       
         let cartData = structuredClone(cartItems);
         if(cartData[itemId]){
             if(cartData[itemId][size]){
@@ -57,13 +52,18 @@ const ShopContextProvider = (props)=>{
         return totalCount
     }
 
+    const updateQuantity = async (itemId,size,quantity)=>{
+            let cartData = structuredClone(cartItems)
+            cartData[itemId][size] = quantity
+            setCartItems(cartData)
+    }
 
 
    
     const value ={
         products,currency,delivery_fee,
         search,setSearch,showSearch,setShowSearch,
-        cartItems,addTocart,getCartCount
+        cartItems,addTocart,getCartCount,updateQuantity
     }
     return(
         <ShopContext.Provider value={value}>
