@@ -1,4 +1,5 @@
 import { v2 as cloudinary } from "cloudinary"
+import productModel from '../models/productModel.js'
 
 //function for adding product
 
@@ -21,11 +22,26 @@ const addProduct = async (req, res) => {
          })
       )
 
+      //adding data in mongodb
 
-      console.log(name, description, price, category, subCategory, sizes, bestseller);
-      console.log(imagesUrl);
+      const productData = {
+         name,
+         description,
+         category,
+         price: Number(price),
+         subCategory,
+         bestseller: bestseller === "true" ? true : false,
+         sizes: JSON.parse(sizes.replace(/'/g, '"')),
+         image: imagesUrl,
+         date: Date.now()
 
-      res.json({})
+      }
+      console.log(productData);
+      const product = new productModel(productData);
+      await product.save()
+
+
+      res.json({ success: true, message: 'Product Added' })
 
 
 
