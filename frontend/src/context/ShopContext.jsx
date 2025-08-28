@@ -9,6 +9,7 @@ export const ShopContext = createContext();
 const ShopContextProvider = (props)=>{
     const currency = "₹";
     const delivery_fee = 10;
+    const backendurl = import.meta.env.VITE_BACKEND_URL;
     const [search,setSearch] = useState('')
     const [showSearch,setShowSearch] = useState(false)
     const [cartItems,setCartItems] = useState({});
@@ -85,7 +86,7 @@ const ShopContextProvider = (props)=>{
         products,currency,delivery_fee,
         search,setSearch,showSearch,setShowSearch,
         cartItems,addTocart,getCartCount,updateQuantity,
-        getCartAmount,navigate
+        getCartAmount,navigate,backendurl
     }
     return(
         <ShopContext.Provider value={value}>
