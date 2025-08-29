@@ -92,11 +92,11 @@ const ShopContextProvider = (props) => {
             for (const item in cartItems[items]) {
                 try {
                     if (cartItems[items][item]) {
-                        totalAnount += itemInfo.price * 87.65 * cartItems[items][item]
+                        totalAnount += itemInfo.price *87.65 * cartItems[items][item]
                     }
                 } catch (error) {
-                    console.log(error);
-                    toast.error(error.message)
+                    // console.log(error);
+                    // toast.error(error.message)
                 }
 
             }
@@ -149,7 +149,7 @@ const ShopContextProvider = (props) => {
 
     const value = {
         products, currency, delivery_fee,
-        search, setSearch, showSearch, setShowSearch,
+        search, setSearch, showSearch, setShowSearch,setCartItems,
         cartItems, addTocart, getCartCount, updateQuantity,
         getCartAmount, navigate, backendurl,
         setToken, token
