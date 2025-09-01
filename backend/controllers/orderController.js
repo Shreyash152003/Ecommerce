@@ -1,6 +1,13 @@
 //placing order using cod
 import orderModel from "../models/orderModel.js"
 import userModel from "../models/userModel.js"
+import Stripe from 'stripe'
+
+//gateway initialized
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+
+
+
 const placeOrder = async (req, res) => {
     try {
         const { userId, items, amount, address } = req.body
@@ -66,7 +73,16 @@ const userOrders = async (req, res) => {
 
 //update order status from admin panel
 const updateStatus = async (req, res) => {
+        try {
+            const {orderId, status}  = req.body
 
+            await orderModel.findByIdAndUpdate(orderId, {status})
+            res.json({success:true,message:'Status Updated'})
+        } catch (error) {
+            console.log(error);
+            res.json({success:false,message:error.message})
+            
+        }
 }
 
 export { allOrders, placeOrder, placeOrderRazorpay, placeOrderStripe, userOrders, updateStatus }
