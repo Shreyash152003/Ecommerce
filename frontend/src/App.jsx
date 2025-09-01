@@ -13,7 +13,7 @@ import Orders from './pages/Orders'
 import Navbar from './components/Navbar'
 import Login from './pages/Login'
 import Footer from './components/Footer'
-import SearchBox from './components/searchBox.jsx'
+import SearchBox from './components/SearchBox'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import Verify from './pages/Verify'
